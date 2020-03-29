@@ -1,4 +1,4 @@
-# Ray Chaser
+# Ray Tracer
 
 ## Overview
 Going through *The Ray Tracer* by Jamis Buck.
