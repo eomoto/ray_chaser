@@ -12,3 +12,12 @@ class Tuple:
 
   def is_vector(self):
     return self.w == self.vector_value
+
+class Point(Tuple):
+  def __init__(self, x, y, z):
+    super().__init__(x, y, z, 1.0)
+
+class Vector(Tuple):
+  def __init__(self, x, y, z):
+    super().__init__(x, y, z, 0)
+
