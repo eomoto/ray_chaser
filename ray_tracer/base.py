@@ -20,6 +20,18 @@ class Tuple:
   def is_vector(self):
     return self.w == self.vector_value
 
+  def equals(self, other):
+    has_equal_points = equals(self.x, other.x) \
+      and equals(self.y, other.y) \
+      and equals(self.z, other.z) \
+      and equals(self.w, other.w)
+    has_equal_type = self.is_point() == other.is_point() \
+      and self.is_vector() == other.is_vector()
+
+    if has_equal_points and has_equal_type:
+      return True
+    return False
+
 class Point(Tuple):
   def __init__(self, x, y, z):
     super().__init__(x, y, z, 1.0)
