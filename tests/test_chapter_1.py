@@ -1,3 +1,4 @@
+from math import *
 import numpy as np
 
 from ray_tracer.base import *
@@ -92,3 +93,28 @@ def test_tuple_scalar_division():
   a = Tuple(1, -2, 3, -4)
   answer = Tuple(0.5, -1, 1.5, -2)
   assert answer.equals(a / 2)
+
+def test_magnitude_1():
+  # Scenario: Computing the magnitude of vector(1, 0, 0)
+  v = Vector(1, 0, 0)
+  assert equals(v.magnitude(), 1)
+
+def test_magnitude_2():
+  # Scenario: Computing the magnitude of vector(0, 1, 0)
+  v = Vector(0, 1, 0)
+  assert equals(v.magnitude(), 1)
+
+def test_magnitude_3():
+  # Scenario: Computing the magnitude of vector(0, 0, 1)
+  v = Vector(0, 0, 1)
+  assert equals(v.magnitude(), 1)
+
+def test_magnitude_4():
+  # Scenario: Computing the magnitude of vector(1, 2, 3)
+  v = Vector(1, 2, 3)
+  assert equals(v.magnitude(), sqrt(14))
+
+def test_magnitude_5():
+  # Scenario: Computing the magnitude of vector(-1, -2, -3)
+  v = Vector(-1, -2, -3)
+  assert equals(v.magnitude(), sqrt(14))

@@ -1,3 +1,5 @@
+from math import *
+
 EPSILON = 0.00001
 
 def equals(x, y):
@@ -59,6 +61,9 @@ class Tuple:
 
   def is_vector(self):
     return self.w == self.vector_value
+
+  def magnitude(self):
+    return sqrt(self.x**2 + self.y**2 + self.z**2 + self.w**2)
 
   def equals(self, other):
     has_equal_points = equals(self.x, other.x) \
