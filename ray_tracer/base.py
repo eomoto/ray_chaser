@@ -1,3 +1,10 @@
+EPSILON = 0.00001
+
+def equals(x, y):
+  if abs(x - y) <= EPSILON:
+    return True
+  return False
+
 class Tuple:
   def __init__(self, x, y, z, w):
     self.point_value = 1.0
