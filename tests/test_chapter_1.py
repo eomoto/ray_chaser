@@ -61,3 +61,34 @@ def test_vector_sub():
   v2 = Vector(5, 6, 7)
   answer = Vector(-2, -4, -6)
   assert answer.equals(v1 - v2)
+
+def test_zero_vector_sub():
+  # Scenario: Subtracting a vector from the zero vector
+  zero = Vector(0, 0, 0)
+  v = Vector(1, -2, 3)
+  answer = Vector(-1, 2, -3)
+  assert answer.equals(zero - v)
+
+def test_tuple_neg():
+  # Scenario: Negating a tuple
+  a = Tuple(1, -2, 3, -4)
+  answer = Tuple(-1, 2, -3, 4)
+  assert answer.equals(-a)
+
+def test_tuple_scalar_multiplication():
+  # Scenario: Multiplying a tuple by a scalar
+  a = Tuple(1, -2, 3, -4)
+  answer = Tuple(3.5, -7, 10.5, -14)
+  assert answer.equals(a * 3.5)
+
+def test_tuple_fraction_multiplication():
+  # Scenario: Multiplying a tuple by a fraction
+  a = Tuple(1, -2, 3, -4)
+  answer = Tuple(0.5, -1, 1.5, -2)
+  assert answer.equals(a * 0.5)
+
+def test_tuple_scalar_division():
+  # Scenario: Dividing a tuple by a scalar
+  a = Tuple(1, -2, 3, -4)
+  answer = Tuple(0.5, -1, 1.5, -2)
+  assert answer.equals(a / 2)

@@ -30,6 +30,30 @@ class Tuple:
       self.w - other.w
     )
 
+  def __neg__(self):
+    return Tuple(
+      self.x * -1,
+      self.y * -1,
+      self.z * -1,
+      self.w * -1
+    )
+
+  def __mul__(self, scalar):
+    return Tuple(
+      self.x * scalar,
+      self.y * scalar,
+      self.z * scalar,
+      self.w * scalar
+    )
+
+  def __truediv__(self, scalar):
+    return Tuple(
+      self.x / scalar,
+      self.y / scalar,
+      self.z / scalar,
+      self.w / scalar
+    )
+
   def is_point(self):
     return self.w == self.point_value
 
