@@ -14,6 +14,22 @@ class Tuple:
     self.z = z
     self.w = w
 
+  def __add__(self, other):
+    return Tuple(
+      self.x + other.x,
+      self.y + other.y,
+      self.z + other.z,
+      self.w + other.w
+    )
+
+  def __sub__(self, other):
+    return Tuple(
+      self.x - other.x,
+      self.y - other.y,
+      self.z - other.z,
+      self.w - other.w
+    )
+
   def is_point(self):
     return self.w == self.point_value
 
