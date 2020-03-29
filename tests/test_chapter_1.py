@@ -35,13 +35,29 @@ def test_vector_creates_vector_tuple():
   assert v.equals(t)
 
 def test_tuple_add():
+  # Scenario: Addint two tuples
   a1 = Tuple(3, -2, 5, 1)
   a2 = Tuple(-2, 3, 1, 0)
   answer = Tuple(1, 1, 6, 1)
   assert answer.equals(a1 + a2)
 
-def test_tuple_sub():
+def test_point_sub():
+  # Scenario: Subtracting two points
   p1 = Point(3, 2, 1)
   p2 = Point(5, 6, 7)
   answer = Vector(-2, -4, -6)
   assert answer.equals(p1 - p2)
+
+def test_vector_and_point_sub():
+  # Scenario: Subtracting a vector from a point
+  p = Point(3, 2, 1)
+  v = Vector(5, 6, 7)
+  answer = Point(-2, -4, -6)
+  assert answer.equals(p - v)
+
+def test_vector_sub():
+  # Scenario: Subtracting two vectors
+  v1 = Vector(3, 2, 1)
+  v2 = Vector(5, 6, 7)
+  answer = Vector(-2, -4, -6)
+  assert answer.equals(v1 - v2)
