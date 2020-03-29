@@ -75,6 +75,9 @@ class Tuple:
       self.w / magnitude
     )
 
+  def dot(self, other):
+    return self.x * other.x + self.y * other.y + self.z * other.z + self.w * other.w
+
   def equals(self, other):
     has_equal_points = equals(self.x, other.x) \
       and equals(self.y, other.y) \
@@ -94,3 +97,10 @@ class Point(Tuple):
 class Vector(Tuple):
   def __init__(self, x, y, z):
     super().__init__(x, y, z, 0)
+
+  def cross(self, other):
+    return Vector(
+      (self.y * other.z) - (self.z * other.y),
+      (self.z * other.x) - (self.x * other.z),
+      (self.x * other.y) - (self.y * other.x)
+    )
