@@ -16,20 +16,20 @@ class Tuple:
     self.z = z
     self.w = w
 
-  def __add__(self, other):
+  def __add__(self, t2):
     return Tuple(
-      self.x + other.x,
-      self.y + other.y,
-      self.z + other.z,
-      self.w + other.w
+      self.x + t2.x,
+      self.y + t2.y,
+      self.z + t2.z,
+      self.w + t2.w
     )
 
-  def __sub__(self, other):
+  def __sub__(self, t2):
     return Tuple(
-      self.x - other.x,
-      self.y - other.y,
-      self.z - other.z,
-      self.w - other.w
+      self.x - t2.x,
+      self.y - t2.y,
+      self.z - t2.z,
+      self.w - t2.w
     )
 
   def __neg__(self):
@@ -62,6 +62,9 @@ class Tuple:
   def is_vector(self):
     return self.w == self.vector_value
 
+  def is_color(self):
+    return False
+
   def magnitude(self):
     return sqrt(self.x**2 + self.y**2 + self.z**2 + self.w**2)
 
@@ -75,16 +78,16 @@ class Tuple:
       self.w / magnitude
     )
 
-  def dot(self, other):
-    return self.x * other.x + self.y * other.y + self.z * other.z + self.w * other.w
+  def dot(self, t2):
+    return self.x * t2.x + self.y * t2.y + self.z * t2.z + self.w * t2.w
 
-  def equals(self, other):
-    has_equal_points = equals(self.x, other.x) \
-      and equals(self.y, other.y) \
-      and equals(self.z, other.z) \
-      and equals(self.w, other.w)
-    has_equal_type = self.is_point() == other.is_point() \
-      and self.is_vector() == other.is_vector()
+  def equals(self, t2):
+    has_equal_points = equals(self.x, t2.x) \
+      and equals(self.y, t2.y) \
+      and equals(self.z, t2.z) \
+      and equals(self.w, t2.w)
+    has_equal_type = self.is_point() == t2.is_point() \
+      and self.is_vector() == t2.is_vector()
 
     if has_equal_points and has_equal_type:
       return True
@@ -98,9 +101,9 @@ class Vector(Tuple):
   def __init__(self, x, y, z):
     super().__init__(x, y, z, 0)
 
-  def cross(self, other):
+  def cross(self, v2):
     return Vector(
-      (self.y * other.z) - (self.z * other.y),
-      (self.z * other.x) - (self.x * other.z),
-      (self.x * other.y) - (self.y * other.x)
+      (self.y * v2.z) - (self.z * v2.y),
+      (self.z * v2.x) - (self.x * v2.z),
+      (self.x * v2.y) - (self.y * v2.x)
     )
