@@ -94,27 +94,44 @@ def test_tuple_scalar_division():
   answer = Tuple(0.5, -1, 1.5, -2)
   assert answer.equals(a / 2)
 
-def test_magnitude_1():
+def test_vector_magnitude_1():
   # Scenario: Computing the magnitude of vector(1, 0, 0)
   v = Vector(1, 0, 0)
   assert equals(v.magnitude(), 1)
 
-def test_magnitude_2():
+def test_vector_magnitude_2():
   # Scenario: Computing the magnitude of vector(0, 1, 0)
   v = Vector(0, 1, 0)
   assert equals(v.magnitude(), 1)
 
-def test_magnitude_3():
+def test_vector_magnitude_3():
   # Scenario: Computing the magnitude of vector(0, 0, 1)
   v = Vector(0, 0, 1)
   assert equals(v.magnitude(), 1)
 
-def test_magnitude_4():
+def test_vector_magnitude_4():
   # Scenario: Computing the magnitude of vector(1, 2, 3)
   v = Vector(1, 2, 3)
   assert equals(v.magnitude(), sqrt(14))
 
-def test_magnitude_5():
+def test_vector_magnitude_5():
   # Scenario: Computing the magnitude of vector(-1, -2, -3)
   v = Vector(-1, -2, -3)
   assert equals(v.magnitude(), sqrt(14))
+
+def test_vector_normalization_1():
+  # Scenario: Normalizing vector(4, 0, 0) gives (1, 0, 0)
+  v = Vector(4, 0, 0)
+  answer = Vector(1, 0, 0)
+  assert v.normalize().equals(answer)
+
+def test_vector_normalization_2():
+  # Scenario: Normalizing vector(1, 2, 3)
+  v = Vector(1, 2, 3)
+  answer = Vector(0.26726, 0.53452, 0.80178)
+  assert v.normalize().equals(answer)
+
+def test_vector_normalization_magnitude():
+  # Scenario: The magnitude of a normalized vector
+  v = Vector(1, 2, 3)
+  assert equals(v.normalize().magnitude(), 1)
