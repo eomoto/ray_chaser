@@ -62,9 +62,6 @@ class Tuple:
   def is_vector(self):
     return self.w == self.vector_value
 
-  def magnitude(self):
-    return sqrt(self.x**2 + self.y**2 + self.z**2 + self.w**2)
-
   def equals(self, other):
     has_equal_points = equals(self.x, other.x) \
       and equals(self.y, other.y) \
@@ -85,3 +82,5 @@ class Vector(Tuple):
   def __init__(self, x, y, z):
     super().__init__(x, y, z, 0)
 
+  def magnitude(self):
+    return sqrt(self.x**2 + self.y**2 + self.z**2 + self.w**2)
