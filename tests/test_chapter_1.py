@@ -32,7 +32,7 @@ def test_point_creates_point_tuple():
   p = Point(4, -4, 3)
   t = Tuple(4, -4, 3, 1)
 
-  assert p.equals(t)
+  assert p == t
 
 def test_vector_creates_vector_tuple():
   # Scenario: vector() creates tuples with w=0
@@ -40,7 +40,7 @@ def test_vector_creates_vector_tuple():
   v = Vector(4, -4, 3)
   t = Tuple(4, -4, 3, 0)
 
-  assert v.equals(t)
+  assert v == t
 
 def test_tuple_add():
   # Scenario: Addint two tuples
@@ -49,7 +49,7 @@ def test_tuple_add():
   a2 = Tuple(-2, 3, 1, 0)
   answer = Tuple(1, 1, 6, 1)
 
-  assert answer.equals(a1 + a2)
+  assert answer == (a1 + a2)
 
 def test_point_sub():
   # Scenario: Subtracting two points
@@ -58,7 +58,7 @@ def test_point_sub():
   p2 = Point(5, 6, 7)
   answer = Vector(-2, -4, -6)
 
-  assert answer.equals(p1 - p2)
+  assert answer == (p1 - p2)
 
 def test_vector_and_point_sub():
   # Scenario: Subtracting a vector from a point
@@ -67,7 +67,7 @@ def test_vector_and_point_sub():
   v = Vector(5, 6, 7)
   answer = Point(-2, -4, -6)
 
-  assert answer.equals(p - v)
+  assert answer == (p - v)
 
 def test_vector_sub():
   # Scenario: Subtracting two vectors
@@ -76,7 +76,7 @@ def test_vector_sub():
   v2 = Vector(5, 6, 7)
   answer = Vector(-2, -4, -6)
 
-  assert answer.equals(v1 - v2)
+  assert answer == (v1 - v2)
 
 def test_zero_vector_sub():
   # Scenario: Subtracting a vector from the zero vector
@@ -85,7 +85,7 @@ def test_zero_vector_sub():
   v = Vector(1, -2, 3)
   answer = Vector(-1, 2, -3)
 
-  assert answer.equals(zero - v)
+  assert answer == (zero - v)
 
 def test_tuple_neg():
   # Scenario: Negating a tuple
@@ -93,7 +93,7 @@ def test_tuple_neg():
   a = Tuple(1, -2, 3, -4)
   answer = Tuple(-1, 2, -3, 4)
 
-  assert answer.equals(-a)
+  assert answer == -a
 
 def test_tuple_scalar_multiplication():
   # Scenario: Multiplying a tuple by a scalar
@@ -101,7 +101,7 @@ def test_tuple_scalar_multiplication():
   a = Tuple(1, -2, 3, -4)
   answer = Tuple(3.5, -7, 10.5, -14)
 
-  assert answer.equals(a * 3.5)
+  assert answer == (a * 3.5)
 
 def test_tuple_fraction_multiplication():
   # Scenario: Multiplying a tuple by a fraction
@@ -109,7 +109,7 @@ def test_tuple_fraction_multiplication():
   a = Tuple(1, -2, 3, -4)
   answer = Tuple(0.5, -1, 1.5, -2)
 
-  assert answer.equals(a * 0.5)
+  assert answer == (a * 0.5)
 
 def test_tuple_scalar_division():
   # Scenario: Dividing a tuple by a scalar
@@ -117,7 +117,7 @@ def test_tuple_scalar_division():
   a = Tuple(1, -2, 3, -4)
   answer = Tuple(0.5, -1, 1.5, -2)
 
-  assert answer.equals(a / 2)
+  assert answer == (a / 2)
 
 def test_vector_magnitude_1():
   # Scenario: Computing the magnitude of vector(1, 0, 0)
@@ -160,7 +160,7 @@ def test_vector_normalization_1():
   v = Vector(4, 0, 0)
   answer = Vector(1, 0, 0)
 
-  assert v.normalize().equals(answer)
+  assert answer == v.normalize()
 
 def test_vector_normalization_2():
   # Scenario: Normalizing vector(1, 2, 3)
@@ -168,7 +168,7 @@ def test_vector_normalization_2():
   v = Vector(1, 2, 3)
   answer = Vector(0.26726, 0.53452, 0.80178)
 
-  assert v.normalize().equals(answer)
+  assert answer == v.normalize()
 
 def test_vector_normalization_magnitude():
   # Scenario: The magnitude of a normalized vector
@@ -193,5 +193,5 @@ def test_cross_product():
   answer1 = Vector(-1, 2, -1)
   answer2 = Vector(1, -2, 1)
 
-  assert a.cross(b).equals(answer1)
-  assert b.cross(a).equals(answer2)
+  assert answer1 == a.cross(b)
+  assert answer2 == b.cross(a)

@@ -1,5 +1,3 @@
-import numpy as np
-
 from ray_tracer.base import *
 
 class Color(Tuple):

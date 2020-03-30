@@ -1,3 +1,5 @@
+import numpy as np
+
 from math import *
 
 EPSILON = 0.00001
@@ -15,6 +17,19 @@ class Tuple:
     self.y = y
     self.z = z
     self.w = w
+    self.size = 4
+
+  def __eq__(self, t2):
+    has_equal_points = equals(self.x, t2.x) \
+      and equals(self.y, t2.y) \
+      and equals(self.z, t2.z) \
+      and equals(self.w, t2.w)
+    has_equal_type = self.is_point() == t2.is_point() \
+      and self.is_vector() == t2.is_vector()
+
+    if has_equal_points and has_equal_type:
+      return True
+    return False
 
   def __add__(self, t2):
     return Tuple(
@@ -80,18 +95,6 @@ class Tuple:
 
   def dot(self, t2):
     return self.x * t2.x + self.y * t2.y + self.z * t2.z + self.w * t2.w
-
-  def equals(self, t2):
-    has_equal_points = equals(self.x, t2.x) \
-      and equals(self.y, t2.y) \
-      and equals(self.z, t2.z) \
-      and equals(self.w, t2.w)
-    has_equal_type = self.is_point() == t2.is_point() \
-      and self.is_vector() == t2.is_vector()
-
-    if has_equal_points and has_equal_type:
-      return True
-    return False
 
 class Point(Tuple):
   def __init__(self, x, y, z):

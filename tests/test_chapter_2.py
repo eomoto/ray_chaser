@@ -18,7 +18,7 @@ def test_color_add():
   c2 = Color(0.7, 0.1, 0.25)
   answer = Color(1.6, 0.7, 1.0)
 
-  assert answer.equals(c1 + c2)
+  assert answer == (c1 + c2)
 
 def test_color_sub():
   # Scenario: Subtracting colors
@@ -27,7 +27,7 @@ def test_color_sub():
   c2 = Color(0.7, 0.1, 0.25)
   answer = Color(0.2, 0.5, 0.5)
 
-  assert answer.equals(c1 - c2)
+  assert answer == (c1 - c2)
 
 def test_color_scalar_mul():
   # Scenario: Multiplying a color by a scalar
@@ -35,7 +35,7 @@ def test_color_scalar_mul():
   c = Color(0.2, 0.3, 0.4)
   answer = Color(0.4, 0.6, 0.8)
 
-  assert answer.equals(c * 2)
+  assert answer == (c * 2)
 
 def test_color_mul():
   # Scenario: Multiplying colors
@@ -44,7 +44,7 @@ def test_color_mul():
   c2 = Color(0.9, 1, 0.1)
   answer = Color(0.9, 0.2, 0.04)
 
-  assert answer.equals(c1.hadamard_product(c2))
+  assert answer == c1.hadamard_product(c2)
 
 def test_create_canvas():
   # Scenario: Creating a canvas
@@ -55,7 +55,7 @@ def test_create_canvas():
 
   for row in c.pixels:
     for p in row:
-      if not p.equals(black_pixel):
+      if not p == black_pixel:
         all_black_pixels = False
         break
 
@@ -72,8 +72,9 @@ def test_write_to_canvas():
   c = Canvas(10, 20)
   red = Color(1, 0, 0)
   c.write_pixel(2, 3, red)
+  answer = red
 
-  assert c.pixel_at(2, 3).equals(red)
+  assert answer == c.pixel_at(2, 3)
 
 def test_ppm_header():
   # Scenario: Constructing the PPM header
@@ -83,7 +84,7 @@ def test_ppm_header():
   ppm_header = ppm.split("\n")[:3]
   answer = "P3\n5 3\n255"
 
-  assert "\n".join(ppm_header) == answer
+  assert answer == "\n".join(ppm_header)
 
 def test_ppm_body():
   # Scenario: Constructing the PPM pixel data
@@ -101,7 +102,7 @@ def test_ppm_body():
   ppm_body = ppm.split("\n")[3:]
   answer = "255 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 128 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 255\n"
 
-  assert "\n".join(ppm_body) == answer
+  assert answer == "\n".join(ppm_body)
 
 def test_ppm_body_length():
   # Scenario: Splitting long lines in PPM files
@@ -115,12 +116,13 @@ def test_ppm_body_length():
   ppm_body = ppm.split("\n")[3:]
   answer = "255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204\n153 255 204 153 255 204 153 255 204 153 255 204 153\n255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204\n153 255 204 153 255 204 153 255 204 153 255 204 153\n"
 
-  assert "\n".join(ppm_body) == answer
+  assert answer == "\n".join(ppm_body)
 
 def test_ppm_ends_in_newline():
   # Scenario: PPM files are terminated by a newline character
 
   c = Canvas(5, 3)
   ppm = c.canvas_to_ppm()
+  answer = "\n"
 
-  assert ppm[-1] == "\n"
+  assert answer == ppm[-1]
