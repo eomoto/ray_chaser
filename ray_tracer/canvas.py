@@ -43,11 +43,12 @@ class Canvas:
 
       self.pixels.append(row)
 
-  def pixel_at(self, y, x):
-    return self.pixels[x][y]
+  def pixel_at(self, x, y):
+    return self.pixels[y][x]
 
-  def write_pixel(self, y, x, color):
-    self.pixels[x][y] = color
+  def write_pixel(self, x, y, color):
+    if (y >= 0 and y < self.height) and (x >= 0 and x < self.width):
+      self.pixels[y][x] = color
 
   def write_all_pixels(self, color):
     for y in range(self.height):

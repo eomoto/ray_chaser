@@ -39,11 +39,7 @@ def create_ppm():
 
   while p.position.y > 0:
     p = tick(e, p)
-    valid_height = p.position.y >= 0 and p.position.y < c.height
-    valid_width = p.position.x >= 0 and p.position.x < c.width
-
-    if valid_height and valid_width:
-      c.write_pixel(ceil(p.position.x), c.height - ceil(p.position.y), color)
+    c.write_pixel(ceil(p.position.x), c.height - ceil(p.position.y), color)
 
   to_file("projectile.ppm", c.canvas_to_ppm())
 
