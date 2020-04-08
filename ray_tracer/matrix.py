@@ -1,5 +1,3 @@
-from math import *
-
 from ray_tracer.base import *
 
 class Matrix:
